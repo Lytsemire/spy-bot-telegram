@@ -1,0 +1,17 @@
+[Unit]
+Description=Spy Bot Telegram
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Замени на своего пользователя (узнать: команда `whoami`)
+User=твой_юзер
+WorkingDirectory=/opt/spybot
+ExecStart=/opt/spybot/venv/bin/python /opt/spybot/bot.py
+EnvironmentFile=/opt/spybot/.env
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
